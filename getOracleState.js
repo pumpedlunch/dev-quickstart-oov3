@@ -1,9 +1,9 @@
 import { ethers } from 'ethers';
 import OOV3 from './out/OptimisticOracleV3.sol/OptimisticOracleV3.json' assert { type: 'json' }
 
-// import assertedLogs from './oracle_events/AssertionMade.json' assert { type: 'json' }
-// import disputedLogs from './oracle_events/AssertionDisputed.json' assert { type: 'json' }
-// import settledLogs from './oracle_events/AssertionSettled.json' assert { type: 'json' }
+import assertedLogs from './oracle_events/AssertionMade.json' assert { type: 'json' } //TODO: UPDATE IMPORT & REMOVE STATIC DATA AT BOTTOM OF FILE
+import disputedLogs from './oracle_events/AssertionDisputed.json' assert { type: 'json' } //TODO: UPDATE IMPORT & REMOVE STATIC DATA AT BOTTOM OF FILE
+import settledLogs from './oracle_events/AssertionSettled.json' assert { type: 'json' } //TODO: UPDATE IMPORT & REMOVE STATIC DATA AT BOTTOM OF FILE
 
 const iface = new ethers.Interface(OOV3.abi)
 
@@ -79,8 +79,8 @@ function getOracleState() {
     console.log("SANDBOX ORACLE STATE")
     console.log('----------------------------------------------------------------------------------')
     console.log('----------------------------------------------------------------------------------')
-    console.log('ChainId: 5')
-    console.log('OOV3 Address: 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82')
+    console.log('ChainId: 5') //TODO: REMOVE HARD CODING
+    console.log('OOV3 Address: 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82') //TODO: REMOVE HARD CODING
     console.log(`\n`)
 
     oracleState.forEach((x) => {
@@ -120,14 +120,14 @@ function getOracleState() {
     console.log('----------------------------------------------------------------------------------')
     console.log("COMMANDS TO INTERACT WITH THE SANDBOXED ORACLE")
     console.log('----------------------------------------------------------------------------------')
-    console.log("To dispute an assertion with status 'asserted', run: XXX")
-    console.log("To resolve an assertion with status 'disputed', run: YYY")
-    console.log("To settle an assertion with status 'expired', run: ZZZ")
+    console.log("To dispute an assertion with status 'asserted', run: XXX") //TODO: UPDATE SCRIPT
+    console.log("To resolve an assertion with status 'disputed', run: YYY") //TODO: UPDATE SCRIPT
+    console.log("To settle an assertion with status 'expired', run: ZZZ") //TODO: UPDATE SCRIPT
     console.log('----------------------------------------------------------------------------------')
     console.log(`\n`)
 }
 
-
+/* 
 
 const assertedLogs = [
     {
@@ -1203,5 +1203,5 @@ const settledLogs = [
         "removed": false
     }
 ]
- 
+  */
 getOracleState();

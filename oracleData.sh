@@ -17,9 +17,9 @@ do
   OracleStateLog="./oracle_events/${MethodName}.json"
 
   cast logs --json \
-   --rpc-url $GOERLI_RPC_URL \
+   --rpc-url $ETH_RPC_URL \
    --from-block $FROM_BLOCK \
-   --address $GOERLI_OOV3 \
+   --address $OOV3 \
    --to-block latest \
    $methodId \
    > $OracleStateLog
