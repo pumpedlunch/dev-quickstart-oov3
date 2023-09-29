@@ -1,8 +1,9 @@
 import { ethers } from 'ethers';
 import OOV3 from './out/OptimisticOracleV3.sol/OptimisticOracleV3.json' assert { type: 'json' }
-// import assertedLogs from 'oracle-state/goerli-asserted.json' 
-// import disputedLogs from 'oracle-state/goerli-disputed.json' TODO: fix import statements
-// import settledLogs from 'oracle-state/goerli-settled.json'
+
+// import assertedLogs from './oracle_events/AssertionMade.json' assert { type: 'json' }
+// import disputedLogs from './oracle_events/AssertionDisputed.json' assert { type: 'json' }
+// import settledLogs from './oracle_events/AssertionSettled.json' assert { type: 'json' }
 
 const iface = new ethers.Interface(OOV3.abi)
 
@@ -72,14 +73,22 @@ function getOracleState() {
         }
     })
 
-    // console.log(`PRINTING ORACLE STATUS FOR ADDRESS ${address}, STARTING FROM BLOCK ${block}`) // TODO: improve this?
+    console.log(`\n`)
+    console.log('----------------------------------------------------------------------------------')
+    console.log('----------------------------------------------------------------------------------')
+    console.log("SANDBOX ORACLE STATE")
+    console.log('----------------------------------------------------------------------------------')
+    console.log('----------------------------------------------------------------------------------')
+    console.log('ChainId: 5')
+    console.log('OOV3 Address: 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82')
+    console.log(`\n`)
 
     oracleState.forEach((x) => {
         console.log('\n----------------------------------------------------------------------------------')
         console.log(`Assertion ID: ${x.assertionId}`)
         console.log('----------------------------------------------------------------------------------')
 
-        console.groupCollapsed()
+        console.group()
 
         console.log(`Claim: ${x.claim}`)
         console.log(`Identifier: ${x.identifier}`)
@@ -106,6 +115,15 @@ function getOracleState() {
         }
         console.groupEnd()
     })
+    console.log(`\n`)
+
+    console.log('----------------------------------------------------------------------------------')
+    console.log("COMMANDS TO INTERACT WITH THE SANDBOXED ORACLE")
+    console.log('----------------------------------------------------------------------------------')
+    console.log("To dispute an assertion with status 'asserted', run: XXX")
+    console.log("To resolve an assertion with status 'disputed', run: YYY")
+    console.log("To settle an assertion with status 'expired', run: ZZZ")
+    console.log('----------------------------------------------------------------------------------')
     console.log(`\n`)
 }
 
@@ -1185,5 +1203,5 @@ const settledLogs = [
         "removed": false
     }
 ]
-
+ 
 getOracleState();
